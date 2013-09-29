@@ -254,6 +254,18 @@ input#search{
 	background-image: url('../images/icon-museum.png');
 }
 
+.icon-recreation{
+	background-image: url('../images/icon-rec.png');
+}
+
+.icon-festival{
+	background-image: url('../images/icon-rec.png');
+}
+.icon-concert{
+	background-image: url('../images/icon-concert.png');
+}
+
+
 
 span.bold{
 	font-weight: bold;

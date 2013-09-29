@@ -89,8 +89,9 @@
 		</div><!--end of logo -->
 		<div id="menu">
 		<ul>
+			<li>My Events</li>
 			<li><span class="button" id="add-event">Add Event</span></li> | 
-			<li>Welcome, Yahoo!</li> | 
+			<li>Welcome, Yahoo!</li> 
 			<li>Log Out</li>
 		</ul>
 	</div><!--end of menu -->
@@ -108,14 +109,16 @@
 					onkeypress="return loadEvents(event)"/>
 
 		</div><!--end of super search -->
+		<br />
+		<p style="color:#fff;">Your closest location is: <span style="color:#a8ff00; font-weight:bold">Sunnyvale, CA </span></p>
 
 	</div><!--end of main content -->
 
 	<div id="results-wrapper">
 		<div id="filters">
-
-			<b>Filter: <b/> 
-
+			Events happening in:<br /> <span id="e-location" style="font-weight:bold; font-size:19px;"></span> <br /><br />
+			<b>Filters: <b/> 
+			
 			<input class="check-with-label" type="checkbox" value="bar" name="check-festivals" id="check-bar"></input>  
 			<label class="label-for-check" for="check-bar">Bar</label>
 
@@ -139,6 +142,27 @@
 
 			<input class="check-with-label" type="checkbox" value="misc" name="check-misc" id="check-misc"></input>  
 			<label class="label-for-check" for="check-art">Misc</label>
+			<br /><br />
+			<b>Price <b/> 
+
+			<input class="check-with-label" type="checkbox" value="bar" name="check-free" id="check-free"></input>  
+			<label class="label-for-check" for="check-free">Free</label>
+
+			<input class="check-with-label" type="checkbox" value="concerts" name="check-s" id="check-s"></input>  
+			<label class="label-for-check" for="check-s">$</label>
+
+			<input class="check-with-label" type="checkbox" value="tech" name="check-ss" id="check-ss"></input>  
+			<label class="label-for-check" for="check-ss">$$</label>
+
+			<input class="check-with-label" type="checkbox" value="public" name="check-sss" id="check-sss"></input>  
+			<label class="label-for-check" for="check-sss">$$$</label>
+
+			<input class="check-with-label" type="checkbox" value="sports" name="check-ssss" id="check-ssss"></input>  
+			<label class="label-for-check" for="check-ssss">$$$$</label>
+
+			<input class="check-with-label" type="checkbox" value="Art" name="check-sssss" id="check-sssss"></input>  
+			<label class="label-for-check" for="check-sssss">$$$$$</label>
+
 			
 		</div><!--end of filters -->
 		<div id="results_">
@@ -198,7 +222,7 @@ function moveSearchUp(query){
 	$.play();
 
 	console.log(query.split(',')[0]);
-
+	$('#e-location').html(query);
 	$.ajax({
 	  url: "scripts/get-events.php",
 	  data: {query: query.split(',')[0]},
@@ -245,7 +269,7 @@ function moveSearchUp(query){
 
 			var time = $('<div>', {
 			  class: 'event-time',
-			  html:	'<span class="bold">Time: </span>' + events[i].start_time
+			  html:	'<span class="bold">Time: </span>' + events[i].event_time
 
 			});
 
