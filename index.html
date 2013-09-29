@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<head>
+	<title>Yahoo! Social</title>
+	<link rel="stylesheet" href="css/default.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="scripts/jstween-1.1.min.js"></script>
+	<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  	<script>
+	  $(function() {
+	    $( "#datepicker" ).datepicker();
+	  });
+	  </script>
+
+</head>
+<body>
+<div id="add-event-component" class="view">
+	<div class="close">Close</div>
+<h1>Add Event</h1>
+
+<form id="form-add-event" >
+<label>title</label>
+<input type="text" name="title" id="title" size="70"/> <br />
+
+
+<table>
+	<tr>
+		<td>
+			<label>Date</label>
+			<input type="text" name="date" id="date"/><br />
+		</td>
+
+		<td>
+			<label>Time</label>
+			<input type="text" name="time" id="time" size="10"/><br />
+		</td>
+
+		<td>
+			<label>Duration</label>
+			<input type="text" name="duration" id="duration"/><br />
+		</td>
+	</tr>
+</table>
+
+
+<table>
+	<tr>
+		<td>
+			<label>City</label>
+			<input type="text" name="city" id="city"/><br />
+		</td>
+
+		<td>
+			<label>State</label>
+			<input type="text" name="state" id="state" size="10"/><br />
+		</td>
+
+		<td>
+			<label>Country</label>
+			<input type="text" name="country" id="country"/><br />
+		</td>
+	</tr>
+</table>
+
+<label>Host</label>
+<input type="text" name="host" id="host" value="Yahoo!" disabled/><br />
+
+<label>Cost</label>
+<input type="text" name="cost" id="cost"/><br />
+
+<label>Details</label>
+<input type="text" name="details" id="details" size="70"/><br />
+
+<label>Hashtags</label>
+<input type="text" name="tags" id="tags"/><br />
+<div class="button-s" id="insert-event">Add event</div>
+
+
+
+</form>
+</div><!--end of add event -->
+
+<div id="nav-wrapper">
+	<div id="nav">
+		<div id="logo">
+
+		</div><!--end of logo -->
+		<div id="menu">
+		<ul>
+			<li><span class="button" id="add-event">Add Event</span></li> | 
+			<li>Welcome, Yahoo!</li> | 
+			<li>Log Out</li>
+		</ul>
+	</div><!--end of menu -->
+	</div> <!--end of nav -->
+</div><!--end of nav-wrapper -->
+
+<div id="fp-wrapper">
+	<div id="main-content">
+		<div id="today-date"><b>Sunday</b>, September 29, 2013</div><!--end of today's date -->
+		<div id="super-search">
+			<input type="text" value="Search city, zip or anything you want" name="search" id="search"
+					onfocus="if(this.value == 'Search city, zip or anything you want'){ this.value = ''; }"
+					onblur="if(this.value == ''){ this.value = 'Search city, zip or anything you want'; }"
+					autocomplete="off"
+					onkeypress="return loadEvents(event)"/>
+
+		</div><!--end of super search -->
+
+	</div><!--end of main content -->
+
+	<div id="results-wrapper">
+		<div id="filters">
+
+			<b>Filter: <b/> 
+
+			<input class="check-with-label" type="checkbox" value="bar" name="check-festivals" id="check-bar"></input>  
+			<label class="label-for-check" for="check-bar">Bar</label>
+
+			<input class="check-with-label" type="checkbox" value="concerts" name="check-concerts" id="check-concerts"></input>  
+			<label class="label-for-check" for="check-concerts">Concerts</label>
+
+			<input class="check-with-label" type="checkbox" value="tech" name="check-tech" id="check-tech"></input>  
+			<label class="label-for-check" for="check-tech">Technology</label>
+
+			<input class="check-with-label" type="checkbox" value="public" name="check-public" id="check-public"></input>  
+			<label class="label-for-check" for="check-public">Public Forums</label>
+
+			<input class="check-with-label" type="checkbox" value="sports" name="check-sports" id="check-sports"></input>  
+			<label class="label-for-check" for="check-sports">Sports</label>
+
+			<input class="check-with-label" type="checkbox" value="Art" name="check-art" id="check-art"></input>  
+			<label class="label-for-check" for="check-art">Art</label>
+
+			<input class="check-with-label" type="checkbox" value="family" name="check-family" id="check-family"></input>  
+			<label class="label-for-check" for="check-family">Family</label>
+
+			<input class="check-with-label" type="checkbox" value="misc" name="check-misc" id="check-misc"></input>  
+			<label class="label-for-check" for="check-art">Misc</label>
+			
+		</div><!--end of filters -->
+		<div id="results_">
+			<div class="event">
+				
+			<div><!--end of event -->	
+		</div><!--end of results -->
+
+	</div><!--end of results wrapper -->
+
+</div><!--end of fp-wrapper -->
+
+
+
+<script type="text/javascript">
+
+function loadEvents(e){
+	//console.log(e);
+}
+
+$('#add-event').on('click', function(){
+	var left = $(this).position().left;
+	console.log(left);
+	$('#add-event-component').show();
+	$('#add-event-component').css('left', left-300);
+
+
+});
+
+$('.close').on('click', function(){
+	$('.view').hide();
+})
+
+$("#search").keyup(function (e) {
+ if (e.keyCode == 13) {
+    var query = $('#search').val();
+    moveSearchUp(query);
+    return false;
+  }
+});
+
+</script>
+
+<script>
+function moveSearchUp(query){
+	$('#main-content').tween({
+	   top:{
+	      start: 0,
+	      stop: -180,
+	      time: 0,
+	      duration: .3,
+	      units: 'px',
+	      effect: 'linear'
+	   }
+	});
+
+	$.play();
+
+	console.log(query.split(',')[0]);
+
+	$.ajax({
+	  url: "scripts/get-events.php",
+	  data: {query: query.split(',')[0]},
+	  type: "post",
+	  success: function(response){
+
+	  	var events = jQuery.parseJSON( response );
+	  	var len = events.length;
+	  	var events_;
+
+
+	  	var results = $('<div>', {
+	  		id: 'results'
+	  	});
+	  	
+	  	for(var i=0; i<len; i++){
+	  		console.log(results);
+	  		var ewrap = $('<div>', {
+			  class: 'event-wrapper'
+			});
+
+	  		var icon = $('<div>', {
+			  class: 'event-icon icon-' + events[i].type.toLowerCase(),
+			});
+
+	  		var e = $('<div>', {
+			  class: 'event',
+			  id: 'event-'+events[i].id
+			});
+
+
+
+	  		var title = $('<div>', {
+			  class: 'event-title',
+			  html:	events[i].title	
+
+			});
+
+			var location = $('<div>', {
+			  class: 'event-location',
+			  html:	'<span class="bold">Location: </span>'  + events[i].city	+ ', ' + events[i].state + ' ' + events[i].country
+
+			});
+
+			var time = $('<div>', {
+			  class: 'event-time',
+			  html:	'<span class="bold">Time: </span>' + events[i].start_time
+
+			});
+
+			var d =  events[i].details;
+			if(events[i].details === null){
+				d = "No details provided";
+			}
+
+			var details = $('<div>', {
+			  class: 'event-details',
+			  html:	'<br /><span class="bold">Details: </span> <br />' + d
+
+			});
+
+			if( events[i].cost.toLowerCase() === "free"){
+				var cost = $('<div>', {
+				  class: 'event-cost',
+				  html:	'<span class="bold">Cost: </span>' + events[i].cost
+				});
+			}else{
+				var cost = $('<div>', {
+				  class: 'event-cost',
+				  html:	'<span class="bold">Cost: </span>' + events[i].cost + ' | <a href="#">Buy tickets</a>'
+				});
+			}
+			
+
+			e.append(title);
+			e.append(location);
+			e.append(time);
+			e.append(cost);
+			e.append(details);
+			ewrap.append(icon);
+			ewrap.append(e);
+			
+			
+	  		results.append(ewrap);
+	  	}
+	  	$('#results-wrapper').fadeIn();
+	  	$('#results_').html(results);
+	  }
+	});
+}
+
+</script>
+
+<script type="text/javascript">
+YUI().use('autocomplete', 'autocomplete-highlighters', function(Y){
+    //autocomplete is available and ready to use    
+ 
+    //add yui skin to class body so that the default 
+    //auto complete widget skin will be applied:
+    Y.one('body').addClass('yui3-skin-sam');
+    Y.one('#search').plug(Y.Plugin.AutoComplete, {
+        resultHighlighter: "charMatch",
+        source: "scripts/query-server.php?q={query}"
+    });
+ 
+});
+</script>
+
+</body>
+</html>

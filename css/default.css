@@ -1,0 +1,300 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font: 13px/1.231 arial,helvetica,clean,sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{
+	color: #3f018e;
+}
+
+#logo{
+	background-image: url('../images/yahoo-logo.png');
+	width: 130px;
+	background-size: cover;
+	float: left;
+	height: 50px;
+}
+
+#menu{
+	float: right;
+	padding-top: 20px;
+}
+/*
+	Navigation
+*/
+#nav-wrapper{
+	position: relative;
+	background-color: #3f018e;
+	height: 60px;
+	padding-top: 10px;
+	z-index: 1000;
+}
+
+#nav{
+	width: 960px;
+	margin: 0 auto;
+	color: #FFF;
+}
+
+#nav li{
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#nav li:hover{
+	background-color: 
+}
+
+input#search{
+	background-color: transparent;
+	color: #fff;
+	border: 2px solid #FFF;
+	border-radius: 10px;
+	font-size: 19px;
+	padding: 20px 20px;
+	margin-top: 10px;
+	width: 500px;
+	background-image: url('../images/MagnifyGlass.png');
+	background-repeat: no-repeat;
+	background-position: 480px;
+}
+
+#main-content{
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+	padding-top: 200px;
+	z-index: 10;
+}
+
+#super-search{
+	width: 400px;
+}
+
+#fp-wrapper{
+	background-image: url('../images/bg-front.jpg');
+	background-size: cover;
+	height: 1200px;
+}
+
+#today-date b{
+	font-weight: 700;
+}
+
+#today-date{
+	font-weight: normal;
+	font-size: 32px;
+	color: #Fff;
+}
+/*
+	Buttons
+*/
+.button{
+	cursor: pointer;
+	padding: 10px;
+}
+
+.button:hover{
+	background-color: #fe8951;
+}
+
+.button-s{
+	padding: 10px;
+	border: 10px;
+	background-color: #3f018e;
+	display: inline-block;
+	border-radius: 10px;
+	color: #fff;
+	cursor: pointer;
+}
+
+/*
+	component
+*/
+#add-event-component{
+	position: absolute;
+	background-color: #fff;
+	margin-top: 80px;
+	width: 500px;
+	padding: 20px;
+}
+
+.view label{
+	width: 100px;
+	display: block;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+
+.view input{
+	padding: 5px 10px;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+
+.view{
+	display: none;
+	position: relative;
+	z-index: 500;
+	border-radius: 10px;
+	border: 1px solid #777;
+}
+
+.view h1{
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+
+#results-wrapper{
+	display: none;
+	position: relative;
+	margin-top: -150px;
+	background-color: #FFF;
+	min-height: 800px;
+}
+
+.event-title{
+	font-size: 19px;
+	color: #3f018e;
+}
+.event{
+
+}
+.event-icon{
+	width: 45px;
+	float: left;
+	height: 40px;
+	background-size: cover;
+	margin-right: 10px;
+}
+
+.event-location{
+	color: #777;
+}
+
+.event-wrapper{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+/*
+	Icons
+*/
+
+.icon-sports{
+	background-image: url('../images/icon-sports.png');
+}
+
+.icon-family{
+	background-image: url('../images/icon-family.png');
+}
+
+.icon-bar{
+	background-image: url('../images/icon-bar.png');
+}
+
+.icon-dance{
+	background-image: url('../images/icon-dance.png');
+}
+
+.icon-technology{
+	background-image: url('../images/icon-tech.png');
+}
+
+.icon-hackthon{
+	background-image: url('../images/icon-tech.png');
+}
+
+.icon-museum{
+	background-image: url('../images/icon-museum.png');
+}
+
+
+span.bold{
+	font-weight: bold;
+}
+
+#results{
+	width: 960px;
+	padding: 20px;
+	margin: 0 auto;
+}
+
+
+#filters{
+	width: 960px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+
+#filters label {
+	cursor: pointer;
+	padding: 5px 10px;
+	background-color: #eeeeee;
+	border-radius: 10px;
+	color: #919191;
+
+}
+
+.check-with-label:checked + .label-for-check{
+	background-color: #3f018e!important;
+	border-radius: 10px;
+	color: #fff!important;
+}
+
+
+
+#filters input {
+	display: none;
+}
+
+.close{
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+}
