@@ -2,11 +2,11 @@
 <head>
 	<title>Yahoo! Social</title>
 	<link rel="stylesheet" href="css/default.css">
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<link rel="stylesheet" href="scripts/jquery-ui.css" />
+	<script src="scripts/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="scripts/jstween-1.1.min.js"></script>
-	<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
-  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="scripts/yui-min.js"></script>
+  	<script src="scripts/jquery-ui.js"></script>
 
   	<script>
 	  $(function() {
@@ -221,7 +221,7 @@ function moveSearchUp(query){
 
 	$.play();
 
-	console.log(query.split(',')[0]);
+	//console.log(query.split(',')[0]);
 	$('#e-location').html(query);
 	$.ajax({
 	  url: "scripts/get-events.php",
@@ -238,76 +238,88 @@ function moveSearchUp(query){
 	  		id: 'results'
 	  	});
 	  	
-	  	for(var i=0; i<len; i++){
-	  		console.log(results);
+	  	if(len === 0){
 	  		var ewrap = $('<div>', {
-			  class: 'event-wrapper'
-			});
-
-	  		var icon = $('<div>', {
-			  class: 'event-icon icon-' + events[i].type.toLowerCase(),
-			});
-
-	  		var e = $('<div>', {
-			  class: 'event',
-			  id: 'event-'+events[i].id
-			});
-
-
-
-	  		var title = $('<div>', {
-			  class: 'event-title',
-			  html:	events[i].title	
-
-			});
-
-			var location = $('<div>', {
-			  class: 'event-location',
-			  html:	'<span class="bold">Location: </span>'  + events[i].city	+ ', ' + events[i].state + ' ' + events[i].country
-
-			});
-
-			var time = $('<div>', {
-			  class: 'event-time',
-			  html:	'<span class="bold">Time: </span>' + events[i].event_time
-
-			});
-
-			var d =  events[i].details;
-			if(events[i].details === null){
-				d = "No details provided";
-			}
-
-			var details = $('<div>', {
-			  class: 'event-details',
-			  html:	'<br /><span class="bold">Details: </span> <br />' + d
-
-			});
-
-			if( events[i].cost.toLowerCase() === "free"){
-				var cost = $('<div>', {
-				  class: 'event-cost',
-				  html:	'<span class="bold">Cost: </span>' + events[i].cost
+				  class: 'event-wrapper',
+				  html: "No events found for this query"
 				});
-			}else{
-				var cost = $('<div>', {
-				  class: 'event-cost',
-				  html:	'<span class="bold">Cost: </span>' + events[i].cost + ' | <a href="#">Buy tickets</a>'
-				});
-			}
-			
-
-			e.append(title);
-			e.append(location);
-			e.append(time);
-			e.append(cost);
-			e.append(details);
-			ewrap.append(icon);
-			ewrap.append(e);
-			
-			
 	  		results.append(ewrap);
-	  	}
+	  	}else{
+
+	  		for(var i=0; i<len; i++){
+		  		//console.log(results);
+		  		var ewrap = $('<div>', {
+				  class: 'event-wrapper'
+				});
+
+		  		var icon = $('<div>', {
+				  class: 'event-icon icon-' + events[i].type.toLowerCase(),
+				});
+
+		  		var e = $('<div>', {
+				  class: 'event',
+				  id: 'event-'+events[i].id
+				});
+
+
+
+		  		var title = $('<div>', {
+				  class: 'event-title',
+				  html:	events[i].title	
+
+				});
+
+				var location = $('<div>', {
+				  class: 'event-location',
+				  html:	'<span class="bold">Location: </span>'  + events[i].city	+ ', ' + events[i].state + ' ' + events[i].country
+
+				});
+
+				var time = $('<div>', {
+				  class: 'event-time',
+				  html:	'<span class="bold">Time: </span>' + events[i].event_time
+
+				});
+
+				var d =  events[i].details;
+				if(events[i].details === null){
+					d = "No details provided";
+				}
+
+				var details = $('<div>', {
+				  class: 'event-details',
+				  html:	'<br /><span class="bold">Details: </span> <br />' + d
+
+				});
+
+				if( events[i].cost.toLowerCase() === "free"){
+					var cost = $('<div>', {
+					  class: 'event-cost',
+					  html:	'<span class="bold">Cost: </span>' + events[i].cost
+					});
+				}else{
+					var cost = $('<div>', {
+					  class: 'event-cost',
+					  html:	'<span class="bold">Cost: </span>' + events[i].cost + ' | <a href="#">Buy tickets</a>'
+					});
+				}
+				
+
+				e.append(title);
+				e.append(location);
+				e.append(time);
+				e.append(cost);
+				e.append(details);
+				ewrap.append(icon);
+				ewrap.append(e);
+				
+				
+		  		results.append(ewrap);
+		  	}//end for
+
+
+	  	}//end else
+	  	
 	  	$('#results-wrapper').fadeIn();
 	  	$('#results_').html(results);
 	  }
